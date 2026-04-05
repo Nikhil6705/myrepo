@@ -1,1 +1,21 @@
-
+name: Uat | login-ms
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "tag required"
+        required: true
+jobs:
+  Code-checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Check-out
+        uses: actions/checkout@v2 
+  Build-Image:
+    runs-on: ubuntu-22.04
+    needs: Code-checkin
+    run: |
+      cd $GITHUB_WORKSPACE
+      ls -l
+      
+        
